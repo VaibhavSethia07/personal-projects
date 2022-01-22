@@ -1,0 +1,52 @@
+
+        ---------------------->
+Client                                          Server      Server-side
+        ----------------------> POST /graphql               logic, Database Access
+
+With the REST APIs we send the GET and POST requests.But with GraphQL we always send a POST request to 1 endpoint `\graphql`
+even when we are getting data. The reason for sending POST request is that GraphQL basically exposes a query language to
+the frontend.The POST request has a body and we can enclose a command inside the body. Eg:
+    {
+        query {
+            user {
+                name
+                age
+            }
+        }
+    }
+
+The above query is send as a text to the GraphQL endpoint and at the server we need to parse it. Since the GraphQL has its
+parsing specifications, there are parsers available for all programming languages.
+
+Misconception: GraphQL helps to query only Facebook Knowledge graph and it can only work with React. This is not true,
+even though Facebook created GraphQL and it was introduced first time with React, GraphQL can work with any server side 
+language and with any frontend framework.
+
+1. Operation Type- query, mutation and subscription
+2. Operation Endpoint- user (we define the target)
+3. Requested Fields- name, age
+
+    GraphQL          translated to                REST
+1. Query                                    In REST world, a query can be understood as GET request, even though it is a
+                                            POST request in GraphQL
+
+2. Mutations                                Manipulate Data (POST, PUT, PATCH, DELETE)                                            
+
+3. Subscription                             Subscriptions are implemented using Websockets
+
+                                    BIG PICTURE
+                             
+                                                    Type Definition
+                                                    (GraphQL is a typed language, it uses types
+                                                    so that we are very clear about which type 
+                                                    of data is returned by the endpoint)
+              Server  POST                                                                                              
+Client ------------------------> /graphql           (We write these definitions
+                                                    Can be seen as routes)                
+                                                    Query Definition    ------------------------------|                                
+                                                                                                    Resolvers( Can
+                                                    Mutation Definition --------------------------- be seen as
+                                                                                                    Controller)
+                                                    Subscription Definition---------------------------|
+
+                                                    

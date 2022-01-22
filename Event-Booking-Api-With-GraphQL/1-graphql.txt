@@ -1,0 +1,30 @@
+We will be making Event Booking API and App. We will build GraphQL APIs, use MongoDB, React.js Single Page Application and
+create charts
+
+--> What is GraphQL?
+    GraphQL is an alternative to RESTful APIs. A RESTful API has endpoints and is independent of the clients connected to
+    it. The RESTful APIs help to exchange data between the frontend and the backend. GraphQL offers more flexibility than
+    the RESTful APIs.
+
+--> Limitations of REST APIs
+    REST APIs work with the endpoints. The endpoints return JSON data. Eg:
+        {
+            "id": 1,
+            "title": "First Post",
+            "content": "...",
+            "creator": {...}
+        }
+    What if we need only `id` and `title`?
+    We can simply send all the data but it would slow down the query process as lots of redundant data wil be sent to 
+    backend.
+
+        Solution 1                                 Solution 2                           Solution 3
+    Create a new REST API Endpoint          Use Query Parameters                    Use GraphQL
+    (e.g. GET /post-slim)                   (e.g. GET /post?data=slim)
+
+    Problem: Lots and lots of Endpoints     Problem: API becomes hard to            Problem: None
+    and lots of Updating                    understand
+
+    With GraphQL we expose 1 endpoint which is very flexible regarding the query. This is because we expose a query 
+    language to the frontend. This allows the frontend engineer request data in all kinds of shapes but the backend
+    do not have to constantly edit the APIs.
