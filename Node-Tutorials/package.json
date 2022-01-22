@@ -1,0 +1,17 @@
+{
+  "name": "Node-Tutorials",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1-intro.js",
+  "scripts": {
+    "start": "node 19-event-driven-programming.js",
+    "dev": "nodemon 20-streams.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
