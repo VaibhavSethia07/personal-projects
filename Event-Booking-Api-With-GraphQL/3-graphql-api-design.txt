@@ -1,0 +1,11 @@
+1.  We first think of the main entities that we have in this project. Since we are making event-booking-api, we need event
+    objects and the users.
+
+2.  Events and users are connected. Users can book events and events are being booked by users. Users can create events.
+
+3.  Events data has CRUD operations. And the users are connected to these operations because they perform them. For 
+    fetching the events, we can filter the events based on the user who created that event `created-by` or by the users
+    who booked them `booked-by`.
+
+4.  Regarding the users, users can be created `Create` and logged-in `Log`. Also, the users can interact with the events.
+    They can book/cancel an event.
