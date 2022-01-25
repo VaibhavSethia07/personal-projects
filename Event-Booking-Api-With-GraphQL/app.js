@@ -1,37 +1,43 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { graphqlHTTP } = require('express-graphql');
-// `buildSchema` is a function that takes the template string that defines the schema 
 const { buildSchema } = require('graphql');
-
 const app = express();
+
+const events = []
+
 app.use(bodyParser.json());
-/* 
-    app.use() takes in the endpoint (common convention is to use `/garphql`) and a middleware function `graphqlHttp()`.
-    In the `graphqlHttp()` we pass a JavaScript object where we configure the GraphQL API. The object contains schema and
-    resolvers key. The schema contains the endpoints and the resolver contains the routes to which the request should be
-    forwarded.
-*/
+
 app.use('/graphql', graphqlHTTP({
-    /* `schema` takes 2 keys: query and mutation. `query` is used for fetching data and `mutation` is used to 
-      change data */
-    /* `type` Since GraphQL is a typed language. It works with types to define what an endpoint returns. By convention
-        we use names such as `RootQuery` and `RootMutation`. In both of them we define the endpoints
+    /* We create a custom type `Event`. This defines how a real event looks like. We use _id for storing ID because
+       MongoDB also uses _id for storing ID. Since every event needs to have an ID we use !. GraphQL doesn't have Date 
+       data type so we use String.
     */
-    /* In the schema we point to`RootQuery` and `RootMutation` */
-    /* In the `RootQuery` if we want to return a list of events then we specify the `event` property and value is the
-       type of list of strings. We use '!' to specify the string/list cannot be null
-    */
-    /* In the `RootMutation` we may create event. This can be done by specifying `createEvent` function which returns a
-       String. 
+    /* Instead of using very long argument list, we can use `input` type. This type tells GraphQL that it is used as a
+       list of arguments  
     */
     schema: buildSchema(`
+        type Event {
+            _id: ID!
+            title: String!
+            description: String!
+            price: Float!
+            date: String!
+        }
+
+        input EventInput {
+            title: String!
+            description: String!
+            price: Float!
+            date: String!
+        }
+
         type RootQuery {
-            events: [String!]!
+            events: [Event!]!
         }
 
         type RootMutation {
-            createEvent(name: String): String
+            createEvent(eventInput: EventInput): Event
         }
 
         schema {
@@ -39,25 +45,49 @@ app.use('/graphql', graphqlHTTP({
             mutation: RootMutation
         }
     `),
-    /* So the `events` and the `createEvent` needs to be supported by our GraphQL API. The logic of this is provided in
-        `rootValue`
-    */
-    // `rootValue` contains a JavaScript object which contains all the resolvers. The resolvers are the functions
     rootValue: {
+        /* We query like this:
+            query {
+                events {
+                    title,
+                    description,
+                    date
+                }
+            }
+           In events we define what fields we are interested in.
+        */
         events: () => {
-            return ["Vaibhav Sethia", "Competitive Programmer", "Pre-final year student"]
+            return events;
         },
-        // `args` is an object holding all the arguments. `events` can also arguments
+        /* We mutate event like this:
+            mutation {
+                createEvent(eventInput: {title: "Vaibhav Sethia", description: "3rd Year student",price:7,date: "2022-01-25T05:24:28.782Z"}){
+                    // Since we are return the event we need to define what all fields we need to return
+                    title
+                    description
+                    price
+                }
+            }
+        */
+        // We create the event from the arguments
         createEvent: (args) => {
-            const eventName = args.name;
-            return `Event ${eventName} created!`;
+            const event = {
+                _id: Math.random().toString(),
+                title: args.eventInput.title,
+                description: args.eventInput.description,
+                // If the argument is not in float `+` converts it into float
+                price: +args.eventInput.price,
+                date: new Date(args.eventInput.date).toISOString()
+            }
+            events.push(event);
+            return event;
         }
     },
-    // To get an interface to hit the GraphQL endpoint use `graphiql` property. Go to 
     graphiql: true
 })
 );
 
-app.listen(3000, () => {
+app.listen(3000, (req, res) => {
     console.log('🚀 Server listening at port 3000...');
 })
+
