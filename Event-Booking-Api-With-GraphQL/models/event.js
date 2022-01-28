@@ -25,6 +25,11 @@ const eventSchema = new Schema({
     date: {
         type: Date,
         required: true
+    },
+    // Every event should have a creator
+    creator: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 });
 
