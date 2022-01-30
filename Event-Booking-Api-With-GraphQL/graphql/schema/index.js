@@ -1,7 +1,16 @@
 const { buildSchema } = require("graphql");
-/* On the Mongoose model's side, we have an user who creates an event and for every user we have all the events
-created by them.*/
+/*  If we add the login functionality to our API, then `login()` is not a mutation because it is not going to change the
+    data stored so we add it to the `RootQuery` section
+*/
+/*  For a user to login we need its email and password. And after the authentication we need to return some data which can
+    be used by the API such as userId, JSON Web Token (JWT) and token expiration time */
 module.exports = buildSchema(`
+        type AuthData {
+            userId: ID!
+            token: String!
+            tokenExpiration: Int!
+        }
+        
         type Booking {
             _id: ID!
             event: Event!
@@ -48,6 +57,7 @@ module.exports = buildSchema(`
             events: [Event!]!
             users: [User!]!
             bookings: [Booking!]!
+            login(email: String!,password: String!): AuthData!
         }
 
         type RootMutation {

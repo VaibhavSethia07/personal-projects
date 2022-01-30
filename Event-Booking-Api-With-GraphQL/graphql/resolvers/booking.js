@@ -4,8 +4,12 @@ const { transformBooking, singleEvent } = require("./merge");
 
 module.exports = {
   // We create an async function. So we need to use try-catch block and `await` before returning the result
-  bookings: async () => {
+  bookings: async (args, req) => {
     try {
+      // Only the authenticated users should see the bookings
+      if (!req.isAuth) {
+        return new Error("User unauthenticated!");
+      }
       const bookings = await Booking.find();
       return bookings.map((booking) => {
         // Maintain the consistency of data types at the Mongoose and the GraphQL end
@@ -16,8 +20,12 @@ module.exports = {
     }
   },
   // Always use args to access the arguments
-  bookEvent: async (args) => {
+  bookEvent: async (args, req) => {
     try {
+      // Only the authenticated users should be able to book an event
+      if (!req.isAuth) {
+        return new Error("User unauthenticated!");
+      }
       const booking = new Booking({
         // `createdAt` and `updatedAt` timestamps will be automatically added by Mongoose
         event: args.eventId,
@@ -32,6 +40,10 @@ module.exports = {
   },
   cancelBooking: async (args) => {
     try {
+      // Also before cancelling a booking, we check if we are authenticated
+      if (!req.isAuth) {
+        return new Error("User unauthenticated!");
+      }
       // find() returns an array. Also first take the object and then destructure it
       const booking = await Booking.findOne({ _id: args.bookingId });
       const result = await Booking.deleteOne({ _id: args.bookingId });

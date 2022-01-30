@@ -21,15 +21,18 @@ module.exports = {
       with User object as well. To solve this we are going to create functions that does the work of fetching the creator
       and the created events
   */
-  createEvent: (args) => {
+  // `req` is provided by default
+  createEvent: (args, req) => {
+    if (!req.isAuth) {
+      return new Error("User unauthenticated!");
+    }
     const eventInput = args.eventInput;
-
     const event = new Event({
       title: eventInput.title,
       description: eventInput.description,
       price: +eventInput.price,
       date: new Date(eventInput.date),
-      creator: "61f51ad623f279bffdafb4d7",
+      creator: req.userId,
     });
 
     let createdEvent;
@@ -38,7 +41,7 @@ module.exports = {
       .then((result) => {
         // Add the creator to the event created
         createdEvent = transformEvent(result);
-        return User.findById("61f51ad623f279bffdafb4d7");
+        return User.findById(req.userId);
       })
       .then((user) => {
         if (!user) return new Error("User doesn't exist!");
