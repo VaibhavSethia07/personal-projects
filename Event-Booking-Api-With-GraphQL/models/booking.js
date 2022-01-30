@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
+// For convinient fetching of bookings we create a separate model
 const bookingSchema = new Schema(
   {
     event: {
