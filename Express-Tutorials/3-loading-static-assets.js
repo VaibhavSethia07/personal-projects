@@ -21,6 +21,8 @@ app.use(express.static('./public'))
 // So there are 2 methods
 // 1. Adding static assets to public folder
 // 2. Server-Side Rendering
+
+/*Important: To load html page at an endpoint */
 app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, './navbar-app/index.html'));
 })

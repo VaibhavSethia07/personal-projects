@@ -1,0 +1,30 @@
+The easiest way to setup react application is to use `create-react-app`. It is built by Facebook and allows us to just
+focus on building apps instead of configurations.
+
+`create-react-app` uses Bable and Webpack. 
+
+Bable- Bable is a JavaScript transpiler that converts the new JavaScript into the old JavaScript.
+Webpack- Webpack is a module bundler. It will be bundling our resources, watching for changes and running Bable transpiler.
+
+Inorder to use the new version of `create-react-app`, use `npx`
+--> Install the package
+npm i create-react-app
+
+--> Create application
+npx create-react-app <folder-name-of-the-app>
+
+--> To run the app
+npm start
+
+Note- `create-react-app` does automatic reloading of our application after every change in the code.
+
+                    Folder Structure
+1. node_modules -   It contains all our dependencies.
+2. package.json -   It contains the list of all the dependencies used in app
+3. public folder -  It contains the index.html. The div tag with id='root' contains all our JavaScript code.
+4. build folder -   This is not visible when we run our app with `npm start` command. We use the command `npm run build`.
+This command sets up production ready build and build folder. The build folder contains everything minified. It contains
+static assets. We can drag and drop this folder on Netlify.
+5. src folder - It has App.css, App.js. The App.js contains all the components. We can change its name as well. We have
+index.js where we target the `root`. `index.js` is JavaScript entry point.
+6. .gitignore - Here we specify which files/folder need to be ignored in commits. Eg /node_modules, /build     

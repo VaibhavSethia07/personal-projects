@@ -1,0 +1,31 @@
+In the `src` folder delete all the files (App.css, App,js, App.test.js, index.css, logo.svg, serviceWorker.js and 
+setupTests.js) except the index.js. And clear the index.js file. So when we run `npm start` there will be error.
+
+--> Creating a component
+We need 2 things, a react dependency and a function. Since index.js is JavaScript entry point we will need some more code
+as well.
+
+--> We import the dependency using 
+import React from 'react'
+
+--> Inorder for React to know the function is a component, we must capitalize the function name. We can create normal/arrow
+function. From the function created we return HTML (technically JSX)
+Eg: 
+function Greeting() {
+    return <h4>This is Vaibhav and this is my first component</h4>;
+}
+
+Now we have to add the Greetings function into the index.html located in the public folder. To do this we import `ReactDom`
+from `react-dom` package
+import ReactDom from 'react-dom'
+
+`ReactDom` has a render method which takes in the what we want to render (i.e Greeting) and where we want to render (i.e
+'root')
+ReactDom.render(<Greeting />, document.getElementById('root));
+
+Now start the server.
+
+Note: In React even though some tags don't have closing tag, we need to self-close them.
+Eg: <Greeting></Greeting>
+    or
+    <Greeting />

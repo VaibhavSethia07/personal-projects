@@ -7,7 +7,7 @@
 
 const http = require('http');
 
-/* We can pas the html through a file by reading it. We can use readFileSync in this case because we are not invoking the
+/* We can pass the html through a file by reading it. We can use readFileSync in this case because we are not invoking the
    createServer function everytime. We require the file only when we instantiate the server.
    const homePage = readFileSync('./index.html');
    If we place the above statment in the createServer() then we need to use readFile
@@ -22,7 +22,7 @@ const server = http.createServer((req, res) => {
         Outside createServer() method
          const homeStyles = readFileSync('./nav-bar/styles.css');
         Inside
-           else if(url === './styles.css){
+           else if(url === './styles.cs's){
                res.writeHead(200, {'content-type':'text/css})
                res.write(homeStyles)
                res.end()

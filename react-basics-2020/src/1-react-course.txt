@@ -1,0 +1,33 @@
+                    REACT
+1. Setup
+2. Basics
+3. React Hooks
+4. Context API
+5. React Router
+
+--> What is a Rect?
+    React is a JavaScript library for building user interfaces. React is developed by Facebook in 2011. It is the most
+    popular library for the user interfaces. Some of its competitors are Angular, Vue and Svelte.
+
+    React is all about components. A component is an independent chunk of user interfaces. It can be as small as HTML 
+    element or we can put entire application in 1 component.
+
+    The benefit of using component is that we can built independent, isolated and reusable components. And then we can sum
+    up the blocks together.
+
+    We can have as many components we like but there will always be a root component.
+
+--> Benefits of React
+1.  Independence- We can build independent pieces of user interfaces. This means changing the layout/logic in 1 component
+    will not break whole app.
+
+2.  Reusablility- Once the component is ready we can use it all through out the app. But the component code is still stored
+    at 1 place.
+
+3.  Speed- Behind the scenes React is using virtual DOM. This means only the component that needs to be updated is affected.
+    This is done without re-rendering the whole app.
+
+    Eg- Twitter, uses React for the side-bar which has icons and text. We can make a component and use it all places by just
+    adding the data. Same is the case with the posts. Every post has image, text and like, retweet button.
+
+

@@ -1,0 +1,5 @@
+We are going to connect the express server to S3 bucket so as to store all the images in the bucket and get them back when
+need.
+
+We do this by first uploading the image to the server first and then pushing it to the S3. When the user requests the file,
+it first goes to express server and then the S3 bucket.

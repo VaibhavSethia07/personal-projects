@@ -126,7 +126,7 @@ app.use(
         return User.findOne({ email: userInput.email })
           .then((user) => {
             // If there is no error
-            if (user) return new Error("User already exits!");
+            if (user) return new Error("User already exists!");
             /*  If we store the password as plain text, then it would be a huge security flaw as if our database gets
                 hacked or an employee steals the information then the passwords of all the users will be exposed. To prevent
                 this we encrypt the password using `bcryptjs` package's `hash(password,# of rounds)` function. It returns

@@ -1,0 +1,11 @@
+1.  Prettier - After install go to Settings -> Tick Format on Paste and Format on Save
+2.  Emmet - For HTML autocomplete.
+    Go to settings.json. In the editor's setting section, write
+    "emmet.includeLanguages" : {
+        "javascript": "javascriptreact"
+    }
+3.  ES7 React/Redux/GraphQL/React-Native Snippets- It saves time in creating boilerplate.
+    Eg: If we want to create new React component, in the JavaScript file type `rafce`. It will create the component with
+    function name as file name.
+    rfc- Regular Function Component
+    Note: The function created with lowercase works because we are exporting it.

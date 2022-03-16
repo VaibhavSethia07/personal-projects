@@ -1,0 +1,7 @@
+                Commands
+pwd - Prints current working directory
+ls - List of Directories
+mkdir <directory-name> - Creates a directory/folder
+cd <directory-name> - change to the given directory name
+cd .. - Navigate to parent/level up
+clear - Clear console

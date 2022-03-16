@@ -27,7 +27,7 @@ const userSchema = new Schema({
     */
   createdEvents: [
     {
-      // Each event stored will be an object and type would be `Schema.Types.ObjectId` abd it will refer to `Events`
+      // Each event stored will be an object and type would be `Schema.Types.ObjectId` and it will refer to `Events`
       type: Schema.Types.ObjectId,
       // The `ref` field allows Mongoose to set relationship and let Mongoose know the 2 models are related
       ref: "Event",

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <title>Homepage</title>
+  </head>
+  <body>
+    <h1>File Upload to S3 test</h1>
+    <form action="/uploadImage" method="post" enctype="multipart/form-data">
+      <label> Please upload the image: </label>
+      <input type="file" name="myImage" />
+      <br />
+      <button type="submit">Upload</button>
+    </form>
+
+    <!-- Hit the endpoint. This makes the request to server, server makes the request to S3 and S3 pipes the image to client -->
+    <img src="/images/63af18594798f7aeac56db4aa4e04ea7" />
+  </body>
+</html>
