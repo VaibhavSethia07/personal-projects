@@ -1,0 +1,15 @@
+// In TypeScript we can change value only to same type
+// let hello = "world";
+
+// It will give error
+// hello = true;
+
+// It is recommended to always specify the type explicitly.
+let foo: string = "bar";
+
+// Specifying the datatype provides safety to developer's code
+const getFullName = (name: string, surname: string): string=> {
+    return name + " " + surname;
+}
+
+console.log(getFullName("Monster", "Lesson"));

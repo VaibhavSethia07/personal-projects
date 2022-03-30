@@ -1,0 +1,55 @@
+In JavaScript, we could create multiple objects with different properties, but this leads to non-uniformity in the code.
+To prevent this we can specify the datatypes for every object that we create. This forces us to give all the properites.
+
+const user: {name: string, age: number} = {
+    name: 'Monster',
+    age: 30
+};
+
+const user2 {name: string, age: number} = {
+    name: 'Jack'
+    age: 20
+};
+
+To avoid typing the datatypes again and agin, we can use Interfaces. Interface in TypeScript helps us to describe entities.
+
+interface User {
+    name: string,
+    age: number
+}
+
+const user: User = {
+    name: 'Monster',
+    age: 30
+};
+
+const user2: User = {
+    name: 'Jack',
+    age: 20
+};
+
+Note: By default all the properties inside the interface are mandatory, but we can make a property optional using ? after
+property name.
+
+interface User {
+    name: string,
+    age?: number
+}
+
+We can have functions inside the Interface
+interface User {
+    name: string;
+    age?: number;
+    getMessage(): string;
+}
+
+const user: User = {
+    name: 'Monster',
+    age: 30,
+    getMessage() {
+        return "Hello" + name;
+    }
+};
+
+
+We can create classes in TypeScript as well. So to avoid naming clashes with Interface we write interfaces as UserInterface

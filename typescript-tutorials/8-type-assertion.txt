@@ -1,0 +1,8 @@
+Type Assertion means converting 1 type to another. 
+We use `as` keyword for type Assertion
+
+let s2: string=vUnknown as string;
+
+To convert a data type (except any data type) to another we first have to convert it into unknown data type and then to desired data type
+let pageNumber: string = '1';
+let numericPageNumber: number = pageNumber as unknown as number;

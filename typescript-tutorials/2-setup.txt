@@ -1,0 +1,10 @@
+1. Install node
+2. Install TypeScript
+    --> npm install -g typescript
+3. Create a file with extension .ts
+4. Run tsc filename.ts
+
+Note: We must transpile code every single time we write code.
+
+Compiling the file in watchmode, helps us see all the errors
+tsc filename.ts -w

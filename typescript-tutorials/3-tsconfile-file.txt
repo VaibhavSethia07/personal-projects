@@ -1,0 +1,8 @@
+`tsconfig.json` is a possibility to config TypeScript. We can provide some parameters in the config file so we need not to
+provide them in the cli.`
+
+`tsconfig` file has an object which has key `compilerOptions`. It has an object as value that stores the directory where we
+store all the files `rootDir` and `outDir` stores the JavaScript files  
+
+Store all the TypeScript files in the src folder and then run `tsc -w`. TypeScript will take all the files from the source
+folder

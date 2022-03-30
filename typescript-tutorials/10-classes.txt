@@ -1,0 +1,25 @@
+class User{
+    private firstName: string;
+    private lastName: string;
+    // readonly is same as final keyword
+    readonly unChangableName: string; 
+
+    constructor (firstName: string, lastName: string) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    getFullname(): string {
+        return this.firstName + ' ' + this.lastName;
+    }
+}
+
+const user = new User('Monster', "Lessons");
+console.log(user.getFullname());
+
+// firstName is a private data member of user class
+console.log(user.firstName);
+
+// Access modifier work same as in Java
+
+Note: All the access modifier exist only in TypeScript. When we transpile in JavaScript code, it is normal JavaScript

@@ -1,0 +1,4 @@
+If we want a variable to hold values of multiple datatypes then we can use union operator (|)
+let username: string = 'alex';
+let pageNumber: string | number = 2; // Default data type is string and then number
+

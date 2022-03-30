@@ -1,0 +1,12 @@
+TypeScript is not a language. It is an extension to JavaScript. It gives us the missing parts of JavaScript i.e datatypes.
+
+--> Why TypeScript is better than JavaScript?
+1. We get errors in transpiling phase and not in runtime. It doesn't mean we get no errors in runtime. But we will get
+less errors in runtime.
+2. It is difficult to maintain and scale JavaScript code. Because we can only define things with objects, arrays, strings
+and so on. With TypeScript we can work with entities. eg. User
+
+TypeScript is a superset of JavaScript
+
+Note: TypeScript can run on browser directly because browser doesn't support TypeScript. This means TypeScript needs to be
+transpiled in JavaScript. The output we get is JavaScript which we can run on browser.

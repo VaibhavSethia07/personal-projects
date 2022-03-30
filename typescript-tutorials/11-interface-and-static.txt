@@ -1,0 +1,27 @@
+Interface in TypeScript work same as they work in Java
+
+interface UserInterface {
+    getFullName(): string;
+}
+
+class User implements UserInterface{
+    private firstName: string;
+    private lastName: string;
+    static readonly maxAge = 50;
+
+    constructor (firstName: string, lastName: string) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    getFullName(): string {
+        return this.firstName + ' ' + this.lastName;
+    }
+
+
+}
+
+const user = new User('Monster', "Lessons");
+console.log(user.getFullName());
+
+console.log(User.maxAge);

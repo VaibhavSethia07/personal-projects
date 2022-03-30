@@ -1,0 +1,6 @@
+const someElement=document.querySelector('.foo');
+
+// Work with DOM is same as work with Java Script.
+someElement.addEventListener('blur',(event)=>{
+
+})

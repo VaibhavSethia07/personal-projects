@@ -1,0 +1,19 @@
+// T- represent generic datatype <T> specifies datatype used in function
+const addId = <T extends object>(obj: T) => {
+    const id = Math.random().toString(16);
+    return {id,
+        ...obj
+    }
+}
+
+interface UserInterface {
+    name: string;
+}
+
+const user: UserInterface = {
+    name: 'Jack',
+}
+
+// Here instead of passing user object we can even pass string but TypeScript will not catch it. To explictly specify we extend object in datatype
+const result = addId<UserInterface>(user);
+console.log("result",result);

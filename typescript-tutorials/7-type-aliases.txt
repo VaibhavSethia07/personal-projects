@@ -1,0 +1,15 @@
+We can give different name to a datatype using `type`
+
+type ID = string;
+
+interface UserInterface {
+    id: ID;
+    name: string;
+    surname: string;
+}
+
+Even though ID and string have same data type but explicitly defining string as ID is architecturally important.
+
+Note: type should start with capital letter
+
+type MaybePopularTag = PopularTag | null;

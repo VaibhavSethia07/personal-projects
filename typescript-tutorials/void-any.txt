@@ -1,0 +1,19 @@
+--> void data type
+const doSomething = (): void => {
+    console.log('doSomething');
+}
+
+--> any type is used when we don't know what we are returning. It is recommended to not use any data type.
+const foo: any = "foo";
+// No error
+console.log(foo.bar());
+
+--> unknown type is an alternative to any data type. The data with unknown data type cannot be assigned to any other data
+type
+
+let vAny: any = 10;
+let vUnknown: unknown = 10;
+
+let s1: string = vAny;
+// unknown variable cannot be assigned
+let s2: string = vUnknown;
