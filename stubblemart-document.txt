@@ -1,0 +1,59 @@
+                                            Capstone Project: StubbleMart
+Part 1
+Module 1
+Video 8 & 9: Running JavaScript with Node & Set Server
+    1. Create a project folder `StubbleMart`
+    2. Create a subfolder `server` which hosts the server of application
+    3. Create index.js in server folder
+    Server- A server is a software/hardware that aims to provide functionality
+    4.  cd server
+        npm init
+        npm i express
+    
+Video 10: Automatic reloading using Nodemon
+    1. Nodemon monitors the changes the source code and then automatically restarts the server when changes are made.
+    2.  cd server
+        npm i nodemon -D
+    3. In package.json
+        "scripts": {
+            "start": "nodemon src/index.js"
+        }
+
+Video 12: Adding TypeScript to server
+    1. To convert node server into TypeScript project, we need to install TypeScript project, we need to install TypeScript dependencies.
+        1. typescript package- Core TypeScript library that helps to compile TypeScript code.
+        2. ts-node- It helps us to run TypeScript programs directly on terminal.
+            npm install typescript ts-node -dependencies
+    2. We create a 'tsconfig.json' file in server folder. This file helps us to customize TypeScript configuration.
+    3. It has many options we use `compilerOptions`
+
+    Code Snippet:
+    {
+        "compileOptions": {
+            "target": "ES6", // Specifies target JavaScript version that compiler outputs
+            "module": "CommonJS", // Allows to use module manager
+            "rootDir": "./src", // Location of all TypeScript files. Create a folder for this option
+            "outDir": "./build", // Where we will compile code
+            "esModuleInterop": true, // To help compile CommonJS module in compliance to ES6
+            "strict": true // For strict type checking
+        }
+    }
+
+    Note:
+    Error will go away when we put TypeScript file in src.
+    4. Install TypeDeclarations file for certain dependencies that we have in our application.
+        npm i -D @types/node @types/express
+    5. Rename index.js --> index.ts
+       Instead of
+       const express = require('express');
+       import express from 'express'
+    6. In package.json's script section change index.js --> index.ts
+
+Video 13: Compiling TypeScript project
+    For production really app, we first need to convert TypeScript code into JavaScript. To achieve this we create a new
+    script called `build`. `build` is responsible for compiling TypeScript --> JavaScript
+    "build": "tsc -p ./"
+    p--> shorthand for --projects. It allows us to compile TypeScript into a project that contains `tsconfig.json` file.
+    ./--> compile all TypeScript files in the folder where package.json live into JavaScript
+    npm run build
+    
