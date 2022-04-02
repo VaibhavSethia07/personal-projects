@@ -56,4 +56,68 @@ Video 13: Compiling TypeScript project
     p--> shorthand for --projects. It allows us to compile TypeScript into a project that contains `tsconfig.json` file.
     ./--> compile all TypeScript files in the folder where package.json live into JavaScript
     npm run build
+
+Video 14: Linting with eslint
+    Linting is the process of code checking and analyzing code for potential errors.
+    1. Install esLint extension
+    2. cd server
+    3. npm install -D eslint @typescript-eslint/parser @typescriopt/eslint-plugin
+    eslint package- It is the core eslint library we will use
+    @typescript-eslint/parser- It is a parser that allows esLint to parse TypeScript code.
+    @typescriopt/eslint-plugin- It is a plugin that is used in conjunction with the `typescript-eslint/parse` package
+    4. In the server directory, create `.eslintrc.json` file. It will be responsible for the setup of esLint configuration of our project.
+    
+    CodeSnippet- .eslintrc.json [If you don't understand its fine]
+    {
+        "parser": "@typescript-eslint/parser", //
+        "parserOptions": { // Language support
+            "ecmaVersion": 2018, // For parsing of modern ecma features
+            "sourceType": "module"
+        },
+        "extends": ["plugin:@typescript-eslint/recommended"],
+        "env": { "node": true }, // Helps to recognize we need node definitions
+        "rules": {
+            "indent": "off",
+            "@typescript-eslint/indent": "off",
+            "@typescript-eslint/explicit-function-return-type": "off"
+        }
+    }
+
+    Note: for the paramters of function which are not use prefix `_` to explicitly show the non-usage. For eg: req --> _req
+
+Video 15: Introducing mock listings
+    Mock listings are given in the code folder
+    Create a listing's file and paste the listings and use them while creating API.
+
+Video 16: Create get and post express routes
+    1. Create a GET endpoint, and return the listing's array in res.send()
+    2. Use the JSON viewer extension and see the listing on the localhost.
+    3. For the POST endpoints, we need the server to access the body of the POST request, we need a middleware to parse the POST body. For
+    this we use `body-parser` package
+    cd server
+    npm i body-parser
+    4. We install its type-declaration file as dev-dependency
+    npm i @types/body-parser -D
+    5. Code Snippet: index.ts
+    import bodyParser from 'body-parser'
+    6. To use middleware use `app.use()`
+    app.use(bodyParser.json())
+    7. For the POST,PUT and DELETE endpoints, keep id's data type as string.
+    For eg: const id: string= req.body.id;
+    8. To test the route, we can use `curl` command or Postman
+    curl -X POST http:localhost:9000/delete-listing -H 'Content-Type: application/json' -d '{"id": "001"}'
+    X flag- Tells us which HTTP method to use
+    POST [url of endpoint]
+    H- Header flag
+    d- Flag used to pass body of request.
+    9. In other terminal run the server
+        npm run start
+
+
+
+
+
+
+
+
     
